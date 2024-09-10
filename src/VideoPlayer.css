@@ -4,10 +4,12 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* 使容器占据整个视口高度 */
-    background-color: black; /* 背景颜色，可以根据需要调整 */
+    background-color: #282c34; /* 背景颜色，可以根据需要调整 */
   }
   
   video {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
