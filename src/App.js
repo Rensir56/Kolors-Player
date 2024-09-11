@@ -11,7 +11,7 @@ function App() {
         <p>Enjoy your video!</p>
       </header>
       <main>
-        <VideoPlayer src="/videos/demo.m3u8"/>
+        <VideoPlayer src="/videos/video.m3u8"/>
       </main>
       <footer className="App-footer">
         <p>&copy; 2024 My Video Player</p>
