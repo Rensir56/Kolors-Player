@@ -11,10 +11,10 @@ function App() {
         <p>Enjoy your video!</p>
       </header>
       <main>
-        <VideoPlayer />
+        <VideoPlayer src="/videos/demo.m3u8"/>
       </main>
       <footer className="App-footer">
-        <p>&copy; 2023 My Video Player</p>
+        <p>&copy; 2024 My Video Player</p>
       </footer>
     </div>
   );

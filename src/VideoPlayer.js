@@ -1,16 +1,36 @@
-// src/VideoPlayer.js
-import React from 'react';
-import './VideoPlayer.css'; // 引入样式文件
+import React, { useEffect, useRef } from 'react';
+import Hls from 'hls.js';
 
-const VideoPlayer = () => {
+const HlsVideoPlayer = ({ src }) => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play();
+      });
+
+      // Clean up on unmount
+      return () => {
+        hls.destroy();
+      };
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      // For browsers that natively support HLS
+      video.src = src;
+      video.addEventListener('loadedmetadata', () => {
+        video.play();
+      });
+    }
+  }, [src]);
+
   return (
-    <div className="video-container">
-      <video controls loop muted>
-        <source src="/video1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <video ref={videoRef} width="50%" id="video2" controls></video>
   );
 };
 
-export default VideoPlayer;
+export default HlsVideoPlayer;
